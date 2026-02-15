@@ -1,0 +1,66 @@
+<svg width="900" height="420" viewBox="0 0 900 420"
+     xmlns="http://www.w3.org/2000/svg">
+
+  <style>
+    .window { fill:#c0c0c0; stroke:#000; stroke-width:2; }
+    .titlebar { fill:#000080; }
+    .titletext {
+      fill:white;
+      font-family:"MS Sans Serif", Arial, sans-serif;
+      font-size:16px;
+      font-weight:bold;
+    }
+    .button {
+      fill:#c0c0c0;
+      stroke:#000;
+      stroke-width:1;
+    }
+    .terminal { fill:black; }
+    .text {
+      fill:#00ff00;
+      font-family:"Courier New", monospace;
+      font-size:14px; /* plus petit */
+      line-height:1; /* moins d’espace vertical */
+      white-space: pre;
+    }
+    .cursor {
+      fill:#00ff00;
+      animation: blink 1s steps(1) infinite;
+    }
+    @keyframes blink { 50% { opacity:0; } }
+  </style>
+
+  <!-- Fenêtre -->
+  <rect x="10" y="10" width="880" height="400" class="window"/>
+
+  <!-- Barre titre -->
+  <rect x="12" y="12" width="876" height="28" class="titlebar"/>
+  <text x="20" y="31" class="titletext">cmd</text>
+
+  <!-- Boutons Windows 98 -->
+  <rect x="815" y="16" width="20" height="20" class="button"/>
+  <line x1="819" y1="26" x2="831" y2="26" stroke="black"/>
+
+  <rect x="840" y="16" width="20" height="20" class="button"/>
+  <rect x="845" y="21" width="10" height="10" fill="none" stroke="black"/>
+
+  <rect x="865" y="16" width="20" height="20" class="button"/>
+  <line x1="869" y1="20" x2="881" y2="32" stroke="black"/>
+  <line x1="881" y1="20" x2="869" y2="32" stroke="black"/>
+
+  <!-- Terminal -->
+  <rect x="20" y="50" width="860" height="340" class="terminal"/>
+
+  <!-- Texte statique -->
+  <text x="10" y="90" class="text">
+    C:\> whoami
+    <tspan x="40" dy="20">luluhackme</tspan>
+    <tspan x="40" dy="20">C:\> title</tspan>
+    <tspan x="40" dy="20">Pentester | Hacker | Cybersecurity enthusiast</tspan>
+    <tspan x="40" dy="20">C:\> skills</tspan>
+    <tspan x="40" dy="20">Web Exploitation | Mobile Pentesting</tspan>
+  </text>
+
+  <!-- Curseur clignotant à la fin -->
+  <rect x="350" y="260" width="10" height="18" class="cursor"/>
+</svg>
