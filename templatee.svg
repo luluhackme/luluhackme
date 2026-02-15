@@ -2,7 +2,6 @@
 
 <defs>
 
-  <!-- subtle crt glow -->
   <filter id="softGlow">
     <feGaussianBlur stdDeviation="0.8" result="blur"/>
     <feMerge>
@@ -11,7 +10,6 @@
     </feMerge>
   </filter>
 
-  <!-- scanlines -->
   <pattern id="scan" width="4" height="4" patternUnits="userSpaceOnUse">
     <rect width="4" height="2" fill="rgba(0,0,0,0.18)"/>
   </pattern>
@@ -20,6 +18,8 @@
     .title { font-family: 'Segoe UI', monospace; fill:#e6edf3; font-size:26px }
     .text { font-family: monospace; fill:#b7c4d6; font-size:16px }
     .dim { fill:#8a97a6 }
+    .user { fill:#dbeafe; font-size:22px; font-family: monospace }
+    .role { fill:#9fb3c8; font-size:16px; font-family: monospace }
   </style>
 
 </defs>
@@ -32,20 +32,19 @@
   <animate attributeName="opacity" values="0.06;0.10;0.07;0.09;0.06" dur="0.4s" repeatCount="indefinite"/>
 </rect>
 
-<!-- header -->
+<!-- boot logs -->
 <text x="60" y="100" class="title" opacity="0">
 Starting system services
 <animate attributeName="opacity" from="0" to="1" begin="0.4s" dur="0.6s" fill="freeze"/>
 </text>
 
-<!-- boot lines -->
 <text x="60" y="150" class="text dim" opacity="0">
 Loading kernel modules...
 <animate attributeName="opacity" from="0" to="1" begin="1.2s" dur="0.4s" fill="freeze"/>
 </text>
 
 <text x="60" y="180" class="text dim" opacity="0">
-Initializing hardware abstraction layer...
+Initializing security subsystems...
 <animate attributeName="opacity" from="0" to="1" begin="1.8s" dur="0.4s" fill="freeze"/>
 </text>
 
@@ -59,19 +58,40 @@ Mounting user environment...
 <animate attributeName="opacity" from="0" to="1" begin="3.0s" dur="0.4s" fill="freeze"/>
 </text>
 
-<!-- progress bar frame -->
+<!-- progress bar -->
 <rect x="60" y="300" width="780" height="22" fill="#1b2430" stroke="#3a4655"/>
 
-<!-- animated progress -->
 <rect x="62" y="302" width="0" height="18" fill="#7aa2f7" filter="url(#softGlow)">
   <animate attributeName="width" from="0" to="776" dur="4s" begin="0.8s" fill="freeze"/>
 </rect>
 
-<!-- status text -->
-<text x="60" y="350" class="text" opacity="0">
-Preparing desktop...
-<animate attributeName="opacity" from="0" to="1" begin="3.8s" dur="0.5s" fill="freeze"/>
-</text>
+<!-- switching screen -->
+<rect width="900" height="420" fill="#0b1117" opacity="0">
+  <animate attributeName="opacity" from="0" to="1" begin="4.8s" dur="0.6s" fill="freeze"/>
+</rect>
+
+<!-- user profile panel -->
+<g opacity="0">
+  <animate attributeName="opacity" from="0" to="1" begin="5.2s" dur="0.8s" fill="freeze"/>
+
+  <!-- avatar frame -->
+  <rect x="110" y="130" width="160" height="160" rx="12" fill="#111827" stroke="#374151"/>
+
+  <!-- avatar -->
+  <image href="https://avatars.githubusercontent.com/u/179798293?v=4"
+         x="115" y="135" width="150" height="150"/>
+
+  <!-- username -->
+  <text x="320" y="190" class="user">luluhackme</text>
+
+  <!-- role -->
+  <text x="320" y="220" class="role">penetration tester</text>
+
+  <!-- status -->
+  <text x="320" y="260" class="text">Session initialized</text>
+  <text x="320" y="285" class="dim">environment ready</text>
+
+</g>
 
 <!-- scanlines -->
 <rect width="900" height="420" fill="url(#scan)" opacity="0.25"/>
