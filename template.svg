@@ -1,66 +1,79 @@
-<svg width="900" height="420" viewBox="0 0 900 420"
-     xmlns="http://www.w3.org/2000/svg">
+<svg width="900" height="420" viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
+
+<defs>
+
+  <!-- subtle crt glow -->
+  <filter id="softGlow">
+    <feGaussianBlur stdDeviation="0.8" result="blur"/>
+    <feMerge>
+      <feMergeNode in="blur"/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
+
+  <!-- scanlines -->
+  <pattern id="scan" width="4" height="4" patternUnits="userSpaceOnUse">
+    <rect width="4" height="2" fill="rgba(0,0,0,0.18)"/>
+  </pattern>
 
   <style>
-    .window { fill:#c0c0c0; stroke:#000; stroke-width:2; }
-    .titlebar { fill:#000080; }
-    .titletext {
-      fill:white;
-      font-family:"MS Sans Serif", Arial, sans-serif;
-      font-size:16px;
-      font-weight:bold;
-    }
-    .button {
-      fill:#c0c0c0;
-      stroke:#000;
-      stroke-width:1;
-    }
-    .terminal { fill:black; }
-    .text {
-      fill:#00ff00;
-      font-family:"Courier New", monospace;
-      font-size:14px; /* plus petit */
-      line-height:1; /* moins d’espace vertical */
-      white-space: pre;
-    }
-    .cursor {
-      fill:#00ff00;
-      animation: blink 1s steps(1) infinite;
-    }
-    @keyframes blink { 50% { opacity:0; } }
+    .title { font-family: 'Segoe UI', monospace; fill:#e6edf3; font-size:26px }
+    .text { font-family: monospace; fill:#b7c4d6; font-size:16px }
+    .dim { fill:#8a97a6 }
   </style>
 
-  <!-- Fenêtre -->
-  <rect x="10" y="10" width="880" height="400" class="window"/>
+</defs>
 
-  <!-- Barre titre -->
-  <rect x="12" y="12" width="876" height="28" class="titlebar"/>
-  <text x="20" y="31" class="titletext">cmd</text>
+<!-- background -->
+<rect width="900" height="420" fill="#0b1117"/>
 
-  <!-- Boutons Windows 98 -->
-  <rect x="815" y="16" width="20" height="20" class="button"/>
-  <line x1="819" y1="26" x2="831" y2="26" stroke="black"/>
+<!-- flicker -->
+<rect width="900" height="420" fill="#0f1720" opacity="0.08">
+  <animate attributeName="opacity" values="0.06;0.10;0.07;0.09;0.06" dur="0.4s" repeatCount="indefinite"/>
+</rect>
 
-  <rect x="840" y="16" width="20" height="20" class="button"/>
-  <rect x="845" y="21" width="10" height="10" fill="none" stroke="black"/>
+<!-- header -->
+<text x="60" y="100" class="title" opacity="0">
+Starting system services
+<animate attributeName="opacity" from="0" to="1" begin="0.4s" dur="0.6s" fill="freeze"/>
+</text>
 
-  <rect x="865" y="16" width="20" height="20" class="button"/>
-  <line x1="869" y1="20" x2="881" y2="32" stroke="black"/>
-  <line x1="881" y1="20" x2="869" y2="32" stroke="black"/>
+<!-- boot lines -->
+<text x="60" y="150" class="text dim" opacity="0">
+Loading kernel modules...
+<animate attributeName="opacity" from="0" to="1" begin="1.2s" dur="0.4s" fill="freeze"/>
+</text>
 
-  <!-- Terminal -->
-  <rect x="20" y="50" width="860" height="340" class="terminal"/>
+<text x="60" y="180" class="text dim" opacity="0">
+Initializing hardware abstraction layer...
+<animate attributeName="opacity" from="0" to="1" begin="1.8s" dur="0.4s" fill="freeze"/>
+</text>
 
-  <!-- Texte statique -->
-  <text x="10" y="90" class="text">
-    C:\> whoami
-    <tspan x="40" dy="20">luluhackme</tspan>
-    <tspan x="40" dy="20">C:\> title</tspan>
-    <tspan x="40" dy="20">Pentester | Hacker | Cybersecurity enthusiast</tspan>
-    <tspan x="40" dy="20">C:\> skills</tspan>
-    <tspan x="40" dy="20">Web Exploitation | Mobile Pentesting</tspan>
-  </text>
+<text x="60" y="210" class="text dim" opacity="0">
+Starting network services...
+<animate attributeName="opacity" from="0" to="1" begin="2.4s" dur="0.4s" fill="freeze"/>
+</text>
 
-  <!-- Curseur clignotant à la fin -->
-  <rect x="350" y="260" width="10" height="18" class="cursor"/>
+<text x="60" y="240" class="text dim" opacity="0">
+Mounting user environment...
+<animate attributeName="opacity" from="0" to="1" begin="3.0s" dur="0.4s" fill="freeze"/>
+</text>
+
+<!-- progress bar frame -->
+<rect x="60" y="300" width="780" height="22" fill="#1b2430" stroke="#3a4655"/>
+
+<!-- animated progress -->
+<rect x="62" y="302" width="0" height="18" fill="#7aa2f7" filter="url(#softGlow)">
+  <animate attributeName="width" from="0" to="776" dur="4s" begin="0.8s" fill="freeze"/>
+</rect>
+
+<!-- status text -->
+<text x="60" y="350" class="text" opacity="0">
+Preparing desktop...
+<animate attributeName="opacity" from="0" to="1" begin="3.8s" dur="0.5s" fill="freeze"/>
+</text>
+
+<!-- scanlines -->
+<rect width="900" height="420" fill="url(#scan)" opacity="0.25"/>
+
 </svg>
