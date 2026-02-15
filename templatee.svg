@@ -78,7 +78,7 @@ Mounting user environment...
   <rect x="110" y="130" width="160" height="160" rx="12" fill="#111827" stroke="#374151"/>
 
   <!-- avatar -->
-  <image href="pfp.jpg"
+  <image href="https://raw.githubusercontent.com/luluhackme/luluhackme/refs/heads/main/pfp.jpg"
          x="115" y="135" width="150" height="150"/>
 
   <!-- username -->
